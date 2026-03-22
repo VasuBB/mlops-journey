@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8" /><title>Scenario 5 - Web App</title></head>
+  <body>
+    <h1>Scenario 5 - Wine Predictor</h1>
+    {% if error %}<p style="color:#b00020">{{ error }}</p>{% endif %}
+    {% if prediction %}
+      <p>Prediction: <strong>{{ prediction }}</strong></p>
+    {% endif %}
+    <form method="post" action="/predict">
+      <input name="feature1" placeholder="Feature 1" required />
+      <input name="feature2" placeholder="Feature 2" required />
+      <input name="feature3" placeholder="Feature 3" required />
+      <input name="feature4" placeholder="Feature 4" required />
+      <input name="feature5" placeholder="Feature 5" required />
+      <button type="submit">Predict</button>
+    </form>
+    <p><a href="/records">View saved records</a></p>
+  </body>
+  </html>
+
+

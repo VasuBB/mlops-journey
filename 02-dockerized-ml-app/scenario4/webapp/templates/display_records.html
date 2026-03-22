@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8" /><title>Scenario 4 - Records</title></head>
+  <body>
+    <h1>Saved Predictions</h1>
+    {% if error %}<p style="color:#b00020">{{ error }}</p>{% endif %}
+    <table>
+      <thead>
+        <tr><th>ID</th><th>f1</th><th>f2</th><th>f3</th><th>f4</th><th>f5</th><th>Class</th><th>Time</th></tr>
+      </thead>
+      <tbody>
+        {% for p in predictions %}
+          <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.f1 }}</td>
+            <td>{{ p.f2 }}</td>
+            <td>{{ p.f3 }}</td>
+            <td>{{ p.f4 }}</td>
+            <td>{{ p.f5 }}</td>
+            <td>{{ p.predicted_class }}</td>
+            <td>{{ p.timestamp }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p><a href="/">Back</a></p>
+  </body>
+  </html>
+
+

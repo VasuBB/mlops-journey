@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8" /><title>Scenario 6 - Records</title></head>
+  <body>
+    <h1>Saved Predictions</h1>
+    {% if error %}<p style="color:#b00020">{{ error }}</p>{% endif %}
+    <ul>
+      {% for p in predictions %}
+        <li>#{{ p.id }} - {{ p.predicted_class }} ({{ p.timestamp }})</li>
+      {% endfor %}
+    </ul>
+    <p><a href="/">Back</a></p>
+  </body>
+  </html>
+
+

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scenario 1 - Simple Flask</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 2rem; }
+      .card { max-width: 640px; margin: 0 auto; padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Wine prediction</h1>
+      <p>Wine classifier (first five features). Health: <code>/health</code></p>
+      {% if error %}
+        <p style="color:#b00020">{{ error }}</p>
+      {% endif %}
+      {% if prediction %}
+        <p>Prediction: <strong>{{ prediction }}</strong></p>
+        <p>f1={{ f1 }}, f2={{ f2 }}, f3={{ f3 }}, f4={{ f4 }}, f5={{ f5 }}</p>
+      {% endif %}
+      <form method="post" action="/predict">
+        <input name="feature1" placeholder="Feature 1" required />
+        <input name="feature2" placeholder="Feature 2" required />
+        <input name="feature3" placeholder="Feature 3" required />
+        <input name="feature4" placeholder="Feature 4" required />
+        <input name="feature5" placeholder="Feature 5" required />
+        <button type="submit">Predict</button>
+      </form>
+    </div>
+  </body>
+  </html>
+
+
