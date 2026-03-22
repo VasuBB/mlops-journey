@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  dbapp:
+    build: ./dbapp
+    ports:
+      - "8001:8001"
+    container_name: cntdbapp
+    image: dbapp_docker_compose
+    networks:
+      - appnet
+
+  webapp:
+    build: ./webapp
+    ports:
+      - "8000:8000"
+    container_name: cntwebapp
+    image: webapp_docker_compose
+    depends_on:
+      - dbapp
+    networks:
+      - appnet
+
+networks:
+  appnet:
+    driver: bridge
+
+

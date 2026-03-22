@@ -1,0 +1,28 @@
+services:
+  dbapp:
+    build: ./dbapp
+    container_name: cntdbapp
+    ports:
+      - "8001:8001"
+    volumes:
+      - myvolume:/dbapp/
+    networks:
+      - appnet
+
+  webapp:
+    build: ./webapp
+    container_name: cntwebapp
+    ports:
+      - "8000:8000"
+    depends_on:
+      - dbapp
+    networks:
+      - appnet
+
+volumes:
+  myvolume:
+
+networks:
+  appnet:
+
+
