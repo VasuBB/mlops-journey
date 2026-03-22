@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Class Predictor</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(to bottom right, #a18cd1, #fbc2eb);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4b0082;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-top: 6px;
+            transition: 0.3s;
+        }
+
+        input[type="number"]:focus {
+            border-color: #a18cd1;
+            outline: none;
+            box-shadow: 0 0 6px rgba(161, 140, 209, 0.5);
+        }
+
+        button {
+            background: linear-gradient(45deg, #a18cd1, #fbc2eb);
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .result {
+            margin-top: 20px;
+            background: #f3e8ff;
+            color: #4b0082;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .error {
+            background: #ffebee;
+            color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Wine Class Predictor 🍷</h1>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label>Alcohol</label>
+                <input type="number" step="0.01" name="alcohol" required>
+            </div>
+            <div class="form-group">
+                <label>Flavanoids</label>
+                <input type="number" step="0.01" name="flavanoids" required>
+            </div>
+            <div class="form-group">
+                <label>Color Intensity</label>
+                <input type="number" step="0.01" name="color_intensity" required>
+            </div>
+            <div class="form-group">
+                <label>Hue</label>
+                <input type="number" step="0.01" name="hue" required>
+            </div>
+            <div class="form-group">
+                <label>Proline</label>
+                <input type="number" step="0.01" name="proline" required>
+            </div>
+
+            <button type="submit">Predict Wine Class</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result {% if 'Error' in prediction_text %}error{% endif %}">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
